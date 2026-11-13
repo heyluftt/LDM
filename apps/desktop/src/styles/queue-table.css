@@ -1,0 +1,130 @@
+.compact-list {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  background: var(--table-row-bg);
+}
+
+.queue-row {
+  gap: 9px;
+  min-height: 0;
+  padding: 9px 10px;
+}
+
+.queue-row.running {
+  box-shadow: inset 2px 0 0 var(--accent-strong);
+}
+
+.queue-row.paused {
+  box-shadow: inset 2px 0 0 var(--ink-soft);
+}
+
+.compact-download-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  min-width: 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--table-row-bg);
+}
+
+.compact-download-card:last-child {
+  border-bottom: 0;
+}
+
+.compact-download-main {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.compact-download-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.queue-file-name {
+  color: var(--ink);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.queue-file-meta {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.queue-file-meta span {
+  max-width: 132px;
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-xs);
+  background: var(--surface-sunken);
+  color: var(--ink-soft);
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.compact-download-actions {
+  display: grid;
+  justify-items: end;
+  gap: 5px;
+  min-width: max-content;
+}
+
+.queue-table .job-actions {
+  gap: 4px;
+}
+
+.queue-table .job-actions button {
+  width: 27px;
+  height: 27px;
+}
+
+.queue-table .diagnostic-button {
+  padding: 4px 6px;
+}
+
+.status-line {
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-line.error,
+.status-line.action-error {
+  color: var(--danger);
+}
+
+:root[data-theme="modern"] .queue-row.running {
+  background: color-mix(in srgb, var(--accent) 6%, var(--table-row-bg));
+}
+
+:root[data-theme="modern"] .queue-file-meta span {
+  border-color: #bac5d2;
+}
+
+:root[data-theme="classic"] .queue-file-meta span {
+  border-color: #808080;
+  box-shadow:
+    inset -1px -1px 0 #808080,
+    inset 1px 1px 0 #ffffff;
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] .queue-file-meta span {
+  box-shadow:
+    inset -1px -1px 0 #111111,
+    inset 1px 1px 0 #a8a8a8;
+}

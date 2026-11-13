@@ -1,0 +1,25 @@
+@media (max-width: 860px) {
+  .workspace {
+    padding: 9px;
+    scroll-padding: 9px;
+  }
+
+  .panel-header {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .metric-strip {
+    justify-content: start;
+    width: 100%;
+  }
+
+  .metric-pill {
+    min-width: 0;
+    flex: 1 1 120px;
+  }
+
+  .theme-switch {
+    grid-template-columns: 1fr;
+  }
+}

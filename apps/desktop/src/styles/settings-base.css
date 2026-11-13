@@ -1,0 +1,111 @@
+.folder-grid,
+.settings-list {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  grid-auto-rows: max-content;
+  min-width: 0;
+  overflow: visible;
+  padding: 10px;
+}
+
+.setting-toggle {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.setting-toggle span {
+  min-width: 0;
+}
+
+.setting-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+}
+
+.setting-field {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.setting-field span {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.setting-field strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.setting-field small {
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* A number between a minus and a plus button. */
+.stepper {
+  display: inline-flex;
+  flex: none;
+  align-items: stretch;
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.stepper:disabled {
+  opacity: 0.6;
+}
+
+.stepper input {
+  width: 38px;
+  min-width: 0;
+  border: 1px solid var(--control-border);
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  background: var(--input-bg);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  padding: 5px 4px;
+  text-align: center;
+}
+
+.stepper-button {
+  display: grid;
+  width: 26px;
+  flex: none;
+  place-items: center;
+  padding: 0;
+}
+
+.stepper-button:first-of-type {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.stepper-button:last-of-type {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.stepper-button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.stepper-button:disabled:active {
+  transform: none;
+}

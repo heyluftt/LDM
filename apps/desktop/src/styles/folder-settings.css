@@ -1,0 +1,62 @@
+.folder-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.folder-row {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.folder-row .folder-label {
+  color: var(--ink-muted);
+  font-weight: 700;
+}
+
+.folder-row.custom .folder-label {
+  color: var(--ink);
+}
+
+.folder-row input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
+  background: var(--input-bg);
+  color: var(--ink);
+  padding: 6px 8px;
+  font: inherit;
+  text-overflow: ellipsis;
+}
+
+.folder-row input:disabled {
+  opacity: 0.6;
+}
+
+.folder-actions {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.folder-actions .icon-action {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+}
+
+:root[data-theme="classic"] .folder-row input {
+  box-shadow:
+    inset -1px -1px 0 #ffffff,
+    inset 1px 1px 0 #808080;
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] .folder-row input {
+  box-shadow:
+    inset -1px -1px 0 #111111,
+    inset 1px 1px 0 #8a8a8a;
+}

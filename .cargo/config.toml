@@ -1,0 +1,7 @@
+# The TypeScript contract types are generated from `crates/ldm-types` by ts-rs whenever
+# `cargo test` runs. They are checked in; CI fails when they are not up to date.
+[env]
+TS_RS_EXPORT_DIR = { value = "packages/contracts/src/generated", relative = true }
+# The integers in these messages are sizes, counts, and Unix seconds. They arrive in JavaScript
+# as JSON numbers, not as bigint.
+TS_RS_LARGE_INT = "number"

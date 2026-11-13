@@ -1,0 +1,85 @@
+name: Release
+
+# Pushing a tag like v0.2.0 builds the installer and the extension archive on a clean machine
+# and attaches them to a draft release. Nothing is public until the draft is published by hand.
+# Releases are built here and not on a developer's PC, because a local build carries the paths
+# of that PC (user name included) in the executable.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Build and draft the release
+    runs-on: windows-latest
+    env:
+      TAG: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v7
+
+      # The version lives in Cargo.toml; a tag that says something else would publish files
+      # whose names and metadata contradict the release they are attached to.
+      - name: Check that the tag is the version in Cargo.toml
+        shell: pwsh
+        run: |
+          $match = Select-String -Path Cargo.toml -Pattern '^version\s*=\s*"([^"]+)"' | Select-Object -First 1
+          if (-not $match) { throw "No version found in Cargo.toml." }
+          $version = $match.Matches[0].Groups[1].Value
+          if ($env:TAG -ne "v$version") {
+            throw "Tag $env:TAG does not match version $version in Cargo.toml (expected v$version)."
+          }
+
+      # pnpm/action-setup reads the version from the packageManager field in package.json.
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - run: pnpm install --frozen-lockfile
+
+      # Native host, desktop frontend, and the NSIS installer with both executables.
+      - run: pnpm build:installer
+
+      # The extension as an archive to unpack and load; the stores do not take it.
+      - run: pnpm --filter @ldm/extension zip
+
+      - name: Collect the release files
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path release | Out-Null
+          Copy-Item target/release/bundle/nsis/*-setup.exe release/
+          Copy-Item apps/extension/.output/ldm-extension-*.zip release/
+          $files = Get-ChildItem release -File
+          if ($files.Count -ne 2) { throw "Expected the installer and the extension archive, found: $($files.Name -join ', ')" }
+          # LF line endings: `sha256sum -c` on Linux, WSL, or Git Bash reads a CR as part of the
+          # file name and reports the files as missing.
+          $lines = $files | ForEach-Object { "$((Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower())  $($_.Name)" }
+          [IO.File]::WriteAllText((Join-Path $PWD 'release/SHA256SUMS.txt'), (($lines -join "`n") + "`n"))
+          Get-Content release/SHA256SUMS.txt
+
+      # The way people check a download outside Windows.
+      - name: Check the checksum file with sha256sum
+        shell: bash
+        working-directory: release
+        run: sha256sum -c SHA256SUMS.txt
+
+      - name: Create the draft release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $files = Get-ChildItem release -File | ForEach-Object { $_.FullName }
+          gh release create $env:TAG @files --draft --generate-notes --title "LDM $env:TAG" --verify-tag

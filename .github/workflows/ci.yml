@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# LDM is Windows-only (named pipes, registry autostart), so every job runs on Windows.
+jobs:
+  typescript:
+    name: TypeScript
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # pnpm/action-setup reads the version from the packageManager field in package.json.
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm -r check
+      - run: pnpm -r test
+
+  rust:
+    name: Rust
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      # tauri::generate_context! embeds apps/desktop/dist at compile time, so the desktop
+      # frontend has to be built before the workspace can be compiled.
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @ldm/desktop build
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - uses: Swatinem/rust-cache@v2
+
+      - run: cargo fmt --all -- --check
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo test --workspace
+
+      # The tests of ldm-types write the TypeScript contract types. A difference here means
+      # a Rust type changed and the generated files were not committed with it.
+      - name: Check that the generated contract types are committed
+        shell: pwsh
+        run: |
+          $changes = git status --porcelain -- packages/contracts/src/generated
+          if ($changes) {
+            git --no-pager diff -- packages/contracts/src/generated
+            throw "packages/contracts/src/generated is out of date. Run cargo test and commit the result:`n$changes"
+          }

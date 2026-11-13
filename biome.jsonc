@@ -1,0 +1,62 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.6.2/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    // The contract types under generated/ are written by ts-rs in its own style.
+    "includes": ["**", "!pnpm-lock.yaml", "!packages/contracts/src/generated"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 120
+  },
+  "markdown": {
+    // The docs are hand-wrapped prose; the Markdown formatter (new in Biome 2.6) would reflow them.
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "style": {
+        // The desktop stylesheets place theme overrides (:root[data-theme=...] .x) ahead of
+        // base rules on purpose; reordering selectors would risk cascade changes that no
+        // visual test covers.
+        "noDescendingSpecificity": "off"
+      }
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "overrides": [
+    {
+      // Tests index into fixtures they just asserted non-empty; with
+      // noUncheckedIndexedAccess the `!` is the shortest honest spelling there.
+      "includes": ["**/*.test.ts", "**/*.test.tsx"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noNonNullAssertion": "off"
+          }
+        }
+      }
+    }
+  ]
+}

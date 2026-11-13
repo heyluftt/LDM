@@ -1,0 +1,32 @@
+{
+  "name": "@ldm/desktop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "build:installer": "node scripts/build-installer.mjs",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "dev": "vite --host 127.0.0.1",
+    "icons": "node scripts/generate-icons.mjs",
+    "prepare:bundle": "node scripts/prepare-bundle.mjs",
+    "tauri": "tauri",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ldm/contracts": "workspace:*",
+    "@tauri-apps/api": "^2.12.4",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zustand": "^5.0.16"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}

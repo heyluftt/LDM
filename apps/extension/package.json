@@ -1,0 +1,21 @@
+{
+  "name": "@ldm/extension",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "wxt build",
+    "check": "wxt prepare && tsc -p tsconfig.json --noEmit",
+    "dev": "wxt",
+    "test": "vitest run",
+    "zip": "wxt zip"
+  },
+  "dependencies": {
+    "@ldm/contracts": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.6",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5",
+    "wxt": "^0.21.4"
+  }
+}

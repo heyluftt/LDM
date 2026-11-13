@@ -1,0 +1,83 @@
+.app-window {
+  display: grid;
+  grid-template-rows: 32px minmax(0, 1fr);
+  height: 100vh;
+  min-height: 0;
+  overflow: hidden;
+  border: 2px solid var(--window-border);
+  background: linear-gradient(180deg, var(--app-bg-accent), var(--app-bg) 220px), var(--app-bg);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.compact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  border-bottom: 1px solid var(--line-strong);
+  background: linear-gradient(180deg, var(--surface-raised), var(--surface-muted)), var(--surface-muted);
+  color: var(--sidebar-ink);
+  padding: 8px 10px;
+}
+
+:root[data-theme="modern"][data-color-mode="dark"] .compact-header {
+  background: linear-gradient(180deg, #162234, #101927), var(--surface-muted);
+}
+
+/* The sidebar colours of the light modern theme are made for a dark surface, and this header
+   is light: the name and the inactive tabs were white on white. The active tab keeps its own
+   dark background and white text. */
+:root:not([data-theme="classic"]):not([data-color-mode="dark"]) .compact-header {
+  --sidebar-ink: var(--ink);
+  --sidebar-muted: var(--ink-soft);
+  --sidebar-line: var(--line);
+}
+
+.workspace {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  grid-auto-rows: max-content;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  padding: 10px;
+  scroll-padding: 10px;
+}
+
+.app-window-settings .workspace {
+  gap: 9px;
+}
+
+:root[data-theme="classic"] .app-window {
+  border-width: 1px;
+  box-shadow:
+    inset -2px -2px 0 #404040,
+    inset 2px 2px 0 #ffffff;
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] .app-window {
+  box-shadow:
+    inset -2px -2px 0 #000000,
+    inset 2px 2px 0 #777777;
+}
+
+:root[data-theme="classic"] .workspace {
+  padding: 8px;
+}
+
+:root[data-theme="classic"] .compact-header {
+  background: var(--surface-raised);
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] .compact-header {
+  box-shadow: inset 0 1px 0 #777777;
+}

@@ -1,0 +1,136 @@
+.segmented-control {
+  display: inline-grid;
+  width: max-content;
+  max-width: 100%;
+  grid-auto-flow: column;
+  overflow: hidden;
+  border: 1px solid var(--control-border);
+  background: var(--control-bg);
+}
+
+.segment {
+  min-height: 29px;
+  border: 0;
+  border-right: 1px solid var(--control-border);
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0 9px;
+}
+
+.segment:last-child {
+  border-right: 0;
+}
+
+.segment.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.kind-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+  gap: 5px 14px;
+}
+
+.domain-rule-box {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 9px;
+}
+
+.domain-rule-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+}
+
+.domain-rule-form input,
+.domain-rule-form select {
+  min-width: 0;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
+  background: var(--input-bg);
+  color: var(--ink);
+  padding: 6px 8px;
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] .domain-rule-form input,
+:root[data-theme="classic"][data-color-mode="dark"] .domain-rule-form select {
+  box-shadow:
+    inset -1px -1px 0 #111111,
+    inset 1px 1px 0 #8a8a8a;
+}
+
+.domain-rule-list {
+  display: grid;
+  gap: 6px;
+}
+
+.domain-rule-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.domain-rule-row .secondary-action {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.domain-rule-row strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.extension-id-box {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 9px;
+}
+
+.extension-id-field {
+  display: grid;
+  gap: 6px;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.extension-id-field span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.extension-id-field strong {
+  color: var(--ink);
+}
+
+.extension-id-field small {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.extension-id-field input {
+  min-width: 0;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
+  background: var(--input-bg);
+  color: var(--ink);
+  font-family: ui-monospace, Consolas, monospace;
+  padding: 6px 8px;
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] .extension-id-field input {
+  box-shadow:
+    inset -1px -1px 0 #111111,
+    inset 1px 1px 0 #8a8a8a;
+}

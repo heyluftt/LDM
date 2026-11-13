@@ -1,0 +1,57 @@
+.startup-toggle span {
+  display: grid;
+  gap: 2px;
+}
+
+.startup-toggle strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.startup-toggle small,
+.settings-note {
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.startup-prompt {
+  display: grid;
+  gap: 8px;
+  border-bottom: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--accent-soft) 48%, var(--surface-raised));
+  padding: 10px 11px;
+}
+
+:root[data-theme="classic"] .startup-prompt {
+  border-bottom-color: #000000;
+  box-shadow:
+    inset -1px -1px 0 #808080,
+    inset 1px 1px 0 #ffffff;
+}
+
+:root[data-color-mode="dark"] .startup-prompt {
+  background: color-mix(in srgb, var(--accent-soft) 24%, var(--surface-raised));
+}
+
+.startup-prompt-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.startup-prompt-copy strong {
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.startup-prompt-copy span {
+  color: var(--ink-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.startup-prompt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}

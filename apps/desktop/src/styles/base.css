@@ -1,0 +1,212 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--app-bg-accent), var(--app-bg) 180px), var(--app-bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow: hidden;
+}
+
+* {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  min-height: 42px;
+  border: 3px solid var(--scrollbar-track);
+  border-radius: 999px;
+  background: var(--scrollbar-thumb);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+:root[data-theme="classic"] *::-webkit-scrollbar-thumb {
+  border: 1px solid #000000;
+  border-radius: 0;
+  background: var(--scrollbar-thumb);
+  box-shadow:
+    inset -1px -1px 0 #404040,
+    inset 1px 1px 0 #ffffff;
+}
+
+:root[data-theme="classic"] *::-webkit-scrollbar-track {
+  border-left: 1px solid #808080;
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] *::-webkit-scrollbar-thumb {
+  box-shadow:
+    inset -1px -1px 0 #111111,
+    inset 1px 1px 0 #a8a8a8;
+}
+
+:root[data-theme="classic"] body {
+  background:
+    linear-gradient(45deg, #bdbdbd 25%, transparent 25%), linear-gradient(-45deg, #bdbdbd 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #bdbdbd 75%), linear-gradient(-45deg, transparent 75%, #bdbdbd 75%),
+    var(--app-bg);
+  background-position:
+    0 0,
+    0 8px,
+    8px -8px,
+    -8px 0;
+  background-size: 16px 16px;
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] body {
+  background:
+    linear-gradient(45deg, #262626 25%, transparent 25%), linear-gradient(-45deg, #262626 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #262626 75%), linear-gradient(-45deg, transparent 75%, #262626 75%),
+    var(--app-bg);
+  background-position:
+    0 0,
+    0 8px,
+    8px -8px,
+    -8px 0;
+  background-size: 16px 16px;
+}
+
+/* The parts of a control that the system draws (the list of a select, an empty checkbox, the
+   scrollbar of a text field) follow the app's colour mode instead of staying light. */
+:root {
+  color-scheme: light;
+}
+
+:root[data-color-mode="dark"] {
+  color-scheme: dark;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* Present for screen readers, not on screen. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+button {
+  letter-spacing: 0;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1,
+h2 {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+p {
+  margin-top: 4px;
+  color: var(--ink-muted);
+  font-size: 13px;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button,
+  input,
+  select,
+  .nav-item,
+  .panel,
+  .theme-option,
+  .color-mode-row,
+  .table-row,
+  .completion-toast {
+    transition:
+      background-color 120ms ease,
+      border-color 120ms ease,
+      box-shadow 120ms ease,
+      color 120ms ease,
+      opacity 120ms ease,
+      transform 120ms ease;
+  }
+
+  .panel {
+    animation: panel-enter 120ms ease-out both;
+  }
+
+  :root[data-theme="modern"] .nav-item:hover,
+  :root[data-theme="modern"] .theme-option:hover,
+  :root[data-theme="modern"] .secondary-action:hover,
+  :root[data-theme="modern"] .toolbar button:hover,
+  :root[data-theme="modern"] .job-actions button:hover,
+  :root[data-theme="modern"] .diagnostic-button:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* biome-ignore-start lint/complexity/noImportantStyles: the reduced-motion reset must beat every animation and transition declaration */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* biome-ignore-end lint/complexity/noImportantStyles: the reduced-motion reset must beat every animation and transition declaration */
+
+@keyframes panel-enter {
+  from {
+    opacity: 0.88;
+    transform: translateY(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

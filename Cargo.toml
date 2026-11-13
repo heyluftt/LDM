@@ -1,0 +1,43 @@
+[workspace]
+resolver = "2"
+members = [
+  "apps/desktop/src-tauri",
+  "crates/ldm-core",
+  "crates/ldm-native-host",
+  "crates/ldm-types",
+]
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+# The desktop app looks for new releases in this repository (commands/updates.rs).
+repository = "https://github.com/heyluftt/LDM"
+version = "0.1.0"
+
+[workspace.dependencies]
+anyhow = "1.0"
+directories = "5.0"
+futures-util = "0.3"
+infer = "0.16"
+ldm-core = { path = "crates/ldm-core" }
+ldm-types = { path = "crates/ldm-types" }
+mime_guess = "2.0"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+sanitize-filename = "0.5"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+tauri = { version = "2.2", features = ["tray-icon"] }
+tauri-build = "2.0"
+tauri-plugin-dialog = "2"
+tauri-plugin-single-instance = "2.2"
+tempfile = "3.14"
+thiserror = "2.0"
+tokio = { version = "1.42", features = ["fs", "io-util", "macros", "net", "process", "rt-multi-thread", "sync", "time"] }
+tracing = "0.1"
+tracing-appender = "0.2"
+tracing-subscriber = "0.3"
+url = "2.5"
+uuid = { version = "1.11", features = ["serde", "v4"] }
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_Security", "Win32_Security_Authorization", "Win32_System_Diagnostics_ToolHelp", "Win32_System_IO", "Win32_System_Ioctl", "Win32_System_JobObjects", "Win32_System_Registry", "Win32_System_Threading"] }
+wiremock = "0.6"
