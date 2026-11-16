@@ -1,0 +1,5 @@
+# ts-rs writes the TypeScript contract types on `cargo test`; CI checks they are committed.
+[env]
+TS_RS_EXPORT_DIR = { value = "packages/contracts/src/generated", relative = true }
+# 64-bit integers are sizes, counts, and Unix seconds; JS gets them as numbers.
+TS_RS_LARGE_INT = "number"

@@ -1,0 +1,25 @@
+[package]
+name = "ldm-core"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+directories.workspace = true
+futures-util.workspace = true
+ldm-types.workspace = true
+mime_guess.workspace = true
+reqwest.workspace = true
+sanitize-filename.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+url.workspace = true
+uuid.workspace = true
+windows-sys.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+wiremock.workspace = true

@@ -1,0 +1,11 @@
+[package]
+name = "ldm-types"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+ts-rs = { version = "12.0", features = ["no-serde-warnings", "uuid-impl"] }
+uuid.workspace = true

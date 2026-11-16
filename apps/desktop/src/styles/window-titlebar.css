@@ -1,0 +1,148 @@
+.app-window-bar {
+  position: sticky;
+  z-index: 30;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(74px, auto) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  min-width: 0;
+  border-bottom: 2px solid var(--window-border);
+  background: var(--window-bar-bg);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 7%),
+    0 10px 20px rgb(0 0 0 / 8%);
+  color: var(--window-bar-ink);
+  user-select: none;
+}
+
+.app-window-title {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+  padding-left: 8px;
+  font-size: 12.5px;
+}
+
+.app-window-title strong {
+  line-height: 1;
+}
+
+.app-window-icon {
+  display: grid;
+  width: 17px;
+  height: 17px;
+  place-items: center;
+}
+
+.app-window-icon svg {
+  display: block;
+}
+
+.app-window-section {
+  overflow: hidden;
+  justify-self: end;
+  color: var(--window-bar-muted);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.window-controls {
+  display: grid;
+  grid-auto-flow: column;
+  align-self: stretch;
+}
+
+.window-controls button {
+  display: grid;
+  width: 38px;
+  height: 100%;
+  place-items: center;
+  border: 0;
+  border-left: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 0;
+  background: transparent;
+  color: var(--window-bar-ink);
+  cursor: pointer;
+  padding: 0;
+}
+
+:root[data-theme="modern"][data-color-mode="dark"] .app-window-bar {
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 5%),
+    0 10px 22px rgb(0 0 0 / 28%);
+}
+
+.window-controls button:hover {
+  background: rgb(255 255 255 / 12%);
+}
+
+.window-controls button:active {
+  background: rgb(255 255 255 / 18%);
+}
+
+.window-controls .window-control-close:hover {
+  background: #c42b1c;
+  color: #ffffff;
+}
+
+:root[data-theme="classic"] .app-window-bar {
+  grid-template-columns: minmax(74px, auto) minmax(0, 1fr) auto;
+  height: 28px;
+  border-bottom: 1px solid #000000;
+  box-shadow: none;
+}
+
+:root[data-theme="classic"] .app-window-title {
+  padding-left: 5px;
+}
+
+:root[data-theme="classic"] .window-controls {
+  gap: 3px;
+  align-items: center;
+  padding: 3px 4px;
+}
+
+:root[data-theme="classic"] .window-controls button {
+  width: 22px;
+  height: 20px;
+  border: 1px solid #000000;
+  background: var(--control-bg);
+  box-shadow:
+    inset -1px -1px 0 #808080,
+    inset 1px 1px 0 #ffffff;
+  color: var(--ink);
+}
+
+:root[data-theme="classic"] .window-controls button:hover {
+  background: var(--control-bg-hover);
+}
+
+:root[data-theme="classic"] .window-controls button:active {
+  box-shadow:
+    inset -1px -1px 0 #ffffff,
+    inset 1px 1px 0 #808080;
+}
+
+:root[data-theme="classic"] .window-controls .window-control-close:hover {
+  background: var(--control-bg);
+  color: var(--ink);
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] .window-controls button {
+  box-shadow:
+    inset -1px -1px 0 #111111,
+    inset 1px 1px 0 #a8a8a8;
+}
+
+:root[data-theme="classic"][data-color-mode="dark"] .window-controls button:active {
+  box-shadow:
+    inset -1px -1px 0 #a8a8a8,
+    inset 1px 1px 0 #111111;
+}

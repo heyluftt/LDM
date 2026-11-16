@@ -1,0 +1,133 @@
+.toolbar {
+  display: flex;
+  gap: 4px;
+}
+
+.toolbar button,
+.job-actions button,
+.primary-action,
+.secondary-action,
+.diagnostic-button,
+.completion-actions button {
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, var(--button-top), var(--control-bg)), var(--control-bg);
+  box-shadow: var(--shadow-control);
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.toolbar button:hover,
+.job-actions button:hover,
+.primary-action:hover,
+.secondary-action:hover,
+.diagnostic-button:hover,
+.completion-actions button:hover {
+  background: linear-gradient(180deg, var(--button-top), var(--control-bg-hover)), var(--control-bg-hover);
+}
+
+.toolbar button:active,
+.job-actions button:active,
+.primary-action:active,
+.secondary-action:active,
+.diagnostic-button:active,
+.completion-actions button:active {
+  transform: translateY(1px);
+}
+
+:root[data-theme="modern"] .toolbar button,
+:root[data-theme="modern"] .job-actions button,
+:root[data-theme="modern"] .primary-action,
+:root[data-theme="modern"] .secondary-action,
+:root[data-theme="modern"] .diagnostic-button,
+:root[data-theme="modern"] .completion-actions button {
+  border-color: #647386;
+}
+
+:root[data-theme="classic"] .toolbar button,
+:root[data-theme="classic"] .job-actions button,
+:root[data-theme="classic"] .primary-action,
+:root[data-theme="classic"] .secondary-action,
+:root[data-theme="classic"] .diagnostic-button,
+:root[data-theme="classic"] .completion-actions button {
+  border-color: #000000;
+}
+
+.toolbar button {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+}
+
+.primary-action,
+.secondary-action {
+  display: inline-flex;
+  height: 30px;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0 9px;
+}
+
+.primary-action {
+  border-color: var(--accent-strong);
+  background: linear-gradient(180deg, #6af0a0, var(--accent)), var(--accent);
+  color: var(--accent-ink);
+}
+
+.primary-action:hover {
+  background: linear-gradient(180deg, #83f4b1, var(--accent)), var(--accent);
+}
+
+.secondary-action:disabled,
+.primary-action:disabled,
+.job-actions button:disabled {
+  cursor: default;
+  opacity: 0.42;
+  transform: none;
+}
+
+.diagnostic-button {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  line-height: 1;
+  padding: 5px 8px;
+}
+
+.diagnostic-button svg {
+  flex: 0 0 auto;
+}
+
+.job-actions {
+  display: inline-flex;
+  gap: 4px;
+  justify-content: end;
+}
+
+.job-actions button {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+}
+
+:root[data-theme="modern"] .job-actions button:not(:disabled):hover,
+:root[data-theme="modern"] .secondary-action:not(:disabled):hover,
+:root[data-theme="modern"] .diagnostic-button:not(:disabled):hover {
+  border-color: var(--ink-soft);
+}
+
+:root[data-theme="modern"][data-color-mode="dark"] .toolbar button,
+:root[data-theme="modern"][data-color-mode="dark"] .job-actions button,
+:root[data-theme="modern"][data-color-mode="dark"] .primary-action,
+:root[data-theme="modern"][data-color-mode="dark"] .secondary-action,
+:root[data-theme="modern"][data-color-mode="dark"] .diagnostic-button,
+:root[data-theme="modern"][data-color-mode="dark"] .completion-actions button {
+  border-color: #52667d;
+}

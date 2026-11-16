@@ -1,0 +1,17 @@
+.legal-status-grid {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 8px 12px;
+  color: var(--ink-muted);
+  font-size: 13px;
+}
+
+.legal-status-grid strong {
+  color: var(--ink);
+}
+
+.legal-doc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

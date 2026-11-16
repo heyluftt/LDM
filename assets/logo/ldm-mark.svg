@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>LDM</title>
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16233a"/>
+      <stop offset="1" stop-color="#070b13"/>
+    </linearGradient>
+    <linearGradient id="arrow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5cf59c"/>
+      <stop offset="1" stop-color="#15c364"/>
+    </linearGradient>
+    <linearGradient id="cup" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fa3bd"/>
+      <stop offset="1" stop-color="#5f7390"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- tile -->
+  <rect x="16" y="16" width="480" height="480" rx="116" fill="url(#tile)"/>
+  <rect x="16" y="16" width="480" height="240" rx="116" fill="url(#gloss)"/>
+  <rect x="24.5" y="24.5" width="463" height="463" rx="108" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="3"/>
+  <!-- cup: where the file lands -->
+  <path d="M144 332 v28 a56 56 0 0 0 56 56 h112 a56 56 0 0 0 56 -56 v-28"
+        fill="none" stroke="url(#cup)" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- arrow -->
+  <path d="M256 112 v178" fill="none" stroke="url(#arrow)" stroke-width="58" stroke-linecap="round"/>
+  <path d="M176 222 l80 82 l80 -82" fill="none" stroke="url(#arrow)" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

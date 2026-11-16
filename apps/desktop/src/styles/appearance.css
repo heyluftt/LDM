@@ -1,0 +1,104 @@
+.theme-switch {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  width: 100%;
+}
+
+.theme-option {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  min-height: 44px;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, var(--button-top), var(--control-bg)), var(--control-bg);
+  box-shadow: var(--shadow-control);
+  color: var(--ink);
+  cursor: pointer;
+  padding: 7px 9px;
+  text-align: left;
+}
+
+.theme-option:hover {
+  background: linear-gradient(180deg, var(--button-top), var(--control-bg-hover)), var(--control-bg-hover);
+}
+
+.theme-option.active {
+  border-color: var(--accent-strong);
+  box-shadow:
+    inset 4px 0 0 var(--accent),
+    var(--shadow-control);
+}
+
+:root[data-theme="modern"] .theme-option.active {
+  border-color: #05070b;
+}
+
+:root[data-theme="classic"] .theme-option.active {
+  border-color: #000000;
+  background: var(--window-bar-bg);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+:root[data-theme="classic"] .theme-option.active span {
+  color: #d9e2ff;
+}
+
+.theme-option strong {
+  font-size: 12.5px;
+  line-height: 1.2;
+}
+
+.theme-option span {
+  color: var(--ink-muted);
+  font-size: 11px;
+}
+
+.color-mode-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  padding: 8px 9px;
+}
+
+.color-mode-row div {
+  display: grid;
+  gap: 3px;
+}
+
+.color-mode-row strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.color-mode-row span {
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+
+.switch-toggle {
+  min-width: 62px;
+  min-height: 28px;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, var(--button-top), var(--control-bg)), var(--control-bg);
+  box-shadow: var(--shadow-control);
+  color: var(--ink-muted);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 0 12px;
+}
+
+.switch-toggle.active {
+  border-color: var(--accent-strong);
+  background: linear-gradient(180deg, var(--progress-fill-end), var(--accent)), var(--accent);
+  color: var(--accent-ink);
+}

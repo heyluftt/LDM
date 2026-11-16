@@ -1,0 +1,22 @@
+@media (max-width: 980px) {
+  .folder-row,
+  .domain-rule-form,
+  .domain-rule-row,
+  .tool-status-row {
+    grid-template-columns: 1fr;
+  }
+
+  .segmented-control {
+    width: 100%;
+    grid-auto-flow: row;
+  }
+
+  .segment {
+    border-right: 0;
+    border-bottom: 1px solid var(--control-border);
+  }
+
+  .segment:last-child {
+    border-bottom: 0;
+  }
+}

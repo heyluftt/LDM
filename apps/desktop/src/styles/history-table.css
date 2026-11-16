@@ -1,0 +1,13 @@
+.history-row {
+  gap: 9px;
+  padding: 9px 10px;
+}
+
+.history-table .job-actions {
+  align-self: center;
+}
+
+.history-table .job-actions button {
+  width: 27px;
+  height: 27px;
+}

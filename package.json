@@ -1,0 +1,20 @@
+{
+  "name": "ldm",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "pnpm --filter @ldm/extension build && pnpm --filter @ldm/desktop build",
+    "build:installer": "pnpm --filter @ldm/desktop prepare:bundle && pnpm --filter @ldm/desktop build && pnpm --filter @ldm/desktop build:installer",
+    "check": "pnpm -r check",
+    "dev:desktop": "pnpm --filter @ldm/desktop dev",
+    "dev:extension": "pnpm --filter @ldm/extension dev",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "test": "pnpm -r test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.2",
+    "typescript": "^7.0.2"
+  }
+}

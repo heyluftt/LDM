@@ -1,0 +1,82 @@
+.tool-status-list {
+  display: grid;
+}
+
+.tool-status-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px 8px;
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--table-row-bg);
+  font-size: 12px;
+  padding: 9px 10px;
+}
+
+.tool-status-row strong {
+  display: block;
+}
+
+.tool-status-row span {
+  color: var(--ink-soft);
+  font-size: 10.5px;
+}
+
+.tool-badge {
+  width: max-content;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 9px;
+}
+
+.tool-badge.found {
+  border-color: #a8dec0;
+  background: var(--accent-soft);
+  color: #14643a;
+}
+
+:root[data-theme="classic"] .tool-badge.found {
+  border-color: #000000;
+  background: var(--window-bar-bg);
+  color: #ffffff;
+}
+
+.tool-badge.missing {
+  border-color: #f3b8b1;
+  background: var(--danger-soft);
+  color: #991b1b;
+}
+
+.tool-status-detail {
+  grid-column: 1 / -1;
+  overflow: hidden;
+  color: var(--ink-muted);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tool-version-line {
+  grid-column: 1 / -1;
+  color: var(--ink-muted);
+  font-size: 11px;
+}
+
+.tool-update-note {
+  grid-column: 1 / -1;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 5px 8px;
+}
+
+.tool-update-note code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  user-select: all;
+}
